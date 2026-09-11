@@ -1,0 +1,17 @@
+# Python temporary files and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv/
+venv/
+ENV/
+env/
+
+# Streamlit temporary configuration and state
+.streamlit/
+
+# OS-specific metadata
+.DS_Store
+Thumbs.db
+desktop.ini
