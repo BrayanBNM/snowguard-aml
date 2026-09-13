@@ -9,7 +9,7 @@ ENV/
 env/
 
 # Streamlit temporary configuration and state
-.streamlit/
+.streamlit/secrets.toml
 
 # OS-specific metadata
 .DS_Store
