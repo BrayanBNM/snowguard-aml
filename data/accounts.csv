@@ -1,0 +1,53 @@
+account_id,customer_name,account_type,risk_score,risk_tier,country,created_at
+ACC_1042,James Sterling,Checking,0.85,High,US,2024-01-15 09:00:00
+ACC_1085,Apex Shell Holdings Ltd,Business Checking,0.92,High,PA,2024-03-10 10:30:00
+ACC_1102,Marcus Vance,Savings,0.78,High,US,2024-06-01 14:15:00
+ACC_1001,Alice Smith,Business Checking,0.12,Low,SG,2023-05-21 00:00:00
+ACC_1002,Bob Jones,Business Checking,0.18,Low,US,2023-02-22 00:00:00
+ACC_1003,Charlie Brown,Business Checking,0.49,Medium,SG,2023-02-14 00:00:00
+ACC_1004,Diana Prince,Checking,0.66,High,CH,2023-04-30 00:00:00
+ACC_1005,Evan Wright,Business Checking,0.82,High,PA,2023-11-29 00:00:00
+ACC_1006,Fiona Gallagher,Savings,0.78,High,PA,2024-02-19 00:00:00
+ACC_1007,George Costanza,Checking,0.51,Medium,US,2023-12-24 00:00:00
+ACC_1008,Hannah Abbott,Checking,0.25,Low,DE,2023-04-21 00:00:00
+ACC_1009,Ian Malcolm,Savings,0.11,Low,GB,2023-02-19 00:00:00
+ACC_1010,Julia Roberts,Business Checking,0.56,Medium,GB,2023-05-16 00:00:00
+ACC_1011,Kevin Bacon,Business Checking,0.49,Medium,US,2023-03-05 00:00:00
+ACC_1012,Laura Croft,Savings,0.1,Low,DE,2024-02-29 00:00:00
+ACC_1013,Michael Scott,Savings,0.42,Medium,SG,2023-10-23 00:00:00
+ACC_1014,Nancy Drew,Checking,0.47,Medium,US,2023-12-05 00:00:00
+ACC_1015,Oscar Martinez,Checking,0.51,Medium,US,2024-03-13 00:00:00
+ACC_1016,Pam Beesly,Savings,0.57,Medium,US,2023-05-23 00:00:00
+ACC_1017,Quentin Tarantino,Savings,0.76,High,KY,2023-07-01 00:00:00
+ACC_1018,Rachel Green,Business Checking,0.45,Medium,US,2024-04-24 00:00:00
+ACC_1019,Steve Rogers,Business Checking,0.44,Medium,SG,2023-11-22 00:00:00
+ACC_1020,Tony Stark,Checking,0.37,Low,US,2023-03-25 00:00:00
+ACC_1021,Bruce Wayne,Business Checking,0.95,High,KY,2023-12-19 00:00:00
+ACC_1022,Clark Kent,Checking,0.75,High,PA,2023-04-28 00:00:00
+ACC_1023,Diana Ross,Savings,0.53,Medium,US,2023-05-18 00:00:00
+ACC_1024,Barry Allen,Business Checking,0.18,Low,US,2024-03-24 00:00:00
+ACC_1025,Hal Jordan,Savings,0.18,Low,GB,2023-07-22 00:00:00
+ACC_1026,Arthur Curry,Savings,0.33,Low,SG,2023-03-13 00:00:00
+ACC_1027,Victor Stone,Business Checking,0.5,Medium,US,2023-05-15 00:00:00
+ACC_1028,Oliver Queen,Savings,0.83,High,CH,2023-04-23 00:00:00
+ACC_1029,Selina Kyle,Checking,0.36,Low,US,2024-01-22 00:00:00
+ACC_1030,Lois Lane,Checking,0.57,Medium,US,2023-11-18 00:00:00
+ACC_1031,Lex Luthor,Savings,0.53,Medium,US,2023-11-02 00:00:00
+ACC_1032,Wally West,Business Checking,0.28,Low,US,2023-08-28 00:00:00
+ACC_1033,Dick Grayson,Checking,0.82,High,PA,2023-12-15 00:00:00
+ACC_1034,Barbara Gordon,Business Checking,0.46,Medium,US,2024-01-20 00:00:00
+ACC_1035,Tim Drake,Savings,0.51,Medium,CA,2023-02-27 00:00:00
+ACC_1036,Jason Todd,Savings,0.31,Low,CA,2023-01-02 00:00:00
+ACC_1037,Damian Wayne,Checking,0.63,Medium,CA,2023-09-17 00:00:00
+ACC_1038,Alfred Pennyworth,Savings,0.57,Medium,US,2024-03-06 00:00:00
+ACC_1039,Jim Gordon,Checking,0.35,Low,SG,2023-03-20 00:00:00
+ACC_1040,Harvey Dent,Business Checking,0.51,Medium,GB,2024-05-03 00:00:00
+ACC_1041,Peter Parker,Savings,0.83,High,PA,2023-01-10 00:00:00
+ACC_1043,Harry Osborn,Savings,0.61,Medium,US,2023-05-03 00:00:00
+ACC_1044,Gwen Stacy,Business Checking,0.19,Low,US,2024-04-29 00:00:00
+ACC_1045,Miles Morales,Savings,0.1,Low,US,2024-02-22 00:00:00
+ACC_1046,Otto Octavius,Business Checking,0.64,Medium,US,2024-01-28 00:00:00
+ACC_1047,Norman Osborn,Savings,0.13,Low,US,2024-04-29 00:00:00
+ACC_1048,Alice Smith,Business Checking,0.81,High,PA,2023-08-05 00:00:00
+ACC_1049,Bob Jones,Business Checking,0.61,Medium,US,2023-12-20 00:00:00
+ACC_1050,Charlie Brown,Savings,0.48,Medium,US,2023-12-10 00:00:00
