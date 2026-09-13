@@ -103,7 +103,7 @@ st.markdown("""
         align-items: center;
     }
 </style>
-""", unsafe_allowed_html=True)
+""", unsafe_allow_html=True)
 
 # Helper functions to load data
 @st.cache_data
@@ -151,8 +151,8 @@ if "filed_alerts" not in st.session_state:
     st.session_state["filed_alerts"] = set()
 
 # Main Header
-st.markdown('<div class="main-header">🛡️ SnowGuard AML Copilot</div>', unsafe_allowed_html=True)
-st.markdown('<div class="sub-header">Autonomous Risk, Fraud, & Regulatory Intelligence Dashboard • GCC Hackathon Edition</div>', unsafe_allowed_html=True)
+st.markdown('<div class="main-header">🛡️ SnowGuard AML Copilot</div>', unsafe_allow_html=True)
+st.markdown('<div class="sub-header">Autonomous Risk, Fraud, & Regulatory Intelligence Dashboard • GCC Hackathon Edition</div>', unsafe_allow_html=True)
 
 # Load CSV files
 accounts_df = load_accounts_data()
@@ -224,7 +224,7 @@ if not accounts_df.empty and not transactions_df.empty:
                     <div style="font-size:0.8rem; color:#6B7280; margin-top: 5px;">{alert["desc"]}</div>
                     <div style="font-size:0.8rem; font-weight:600; color:#1E3A8A; margin-top: 5px;">Risk Score: {alert["score"]} • Domicile: {alert["id"]}</div>
                 </div>
-                """, unsafe_allowed_html=True)
+                """, unsafe_allow_html=True)
                 
                 # Selection Button
                 if st.button(f"Analyze {alert['id']}", key=f"btn_select_{alert['id']}", use_container_width=True):
@@ -253,7 +253,7 @@ if not accounts_df.empty and not transactions_df.empty:
                 <div><span class="bold-label">Country:</span> {acc_row['country']}</div>
             </div>
         </div>
-        """, unsafe_allowed_html=True)
+        """, unsafe_allow_html=True)
 
         # Tabbed interface: Transactions vs Conversational Copilot
         tab_chat, tab_ledger = st.tabs(["💬 Cortex Copilot Chat", "📊 Transaction Ledger"])
@@ -275,9 +275,9 @@ if not accounts_df.empty and not transactions_df.empty:
             with chat_container:
                 for chat in st.session_state["chat_history"].get(active_acc_id, []):
                     if chat["role"] == "user":
-                        st.markdown(f'<div class="chat-user">{chat["message"]}</div>', unsafe_allowed_html=True)
+                        st.markdown(f'<div class="chat-user">{chat["message"]}</div>', unsafe_allow_html=True)
                     else:
-                        st.markdown(f'<div class="chat-agent">{chat["message"]}</div>', unsafe_allowed_html=True)
+                        st.markdown(f'<div class="chat-agent">{chat["message"]}</div>', unsafe_allow_html=True)
 
             # Chat inputs & predefined quick-actions
             st.markdown("**⚡ Quick Compliance Queries:**")
