@@ -1,5 +1,5 @@
 # SnowGuard AML Copilot
-## Autonomous Risk, Fraud, & Regulatory Intelligence Copilot • Powered by Snowflake Cortex
+### Autonomous Risk, Fraud, & Regulatory Intelligence Copilot • Powered by Snowflake Cortex
 
 SnowGuard AML Copilot is an enterprise-grade Streamlit application designed for compliance investigators, risk teams, and financial crime auditors. Built for the Snowflake Hackathon (Risk, Fraud, and Regulatory Intelligence Copilot track), it accelerates alert triage, isolates sub-threshold structuring patterns, verifies FinCEN regulatory requirements, and synthesizes audit-ready Suspicious Activity Reports (Form SAR-1020).
 
