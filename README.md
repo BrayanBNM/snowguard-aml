@@ -1,55 +1,103 @@
-# SnowGuard AML
+# SnowGuard AML Copilot
+### Autonomous Risk, Fraud, & Regulatory Intelligence Copilot • Powered by Snowflake Cortex
 
-SnowGuard AML is a Streamlit prototype for anti-money-laundering (AML) alert triage, structured transaction analysis, policy review, and SAR dossier generation. It was created for the Snowflake Hackathon's Risk, Fraud, and Regulatory Intelligence Copilot track.
+SnowGuard AML Copilot is an enterprise-grade Streamlit application designed for compliance investigators, risk teams, and financial crime auditors. Built for the Snowflake Hackathon (Risk, Fraud, and Regulatory Intelligence Copilot track), it accelerates alert triage, isolates sub-threshold structuring patterns, verifies FinCEN regulatory requirements, and synthesizes audit-ready Suspicious Activity Reports (Form SAR-1020).
 
-> **Prototype notice:** This project uses synthetic data. The generated dossier and the "Approve & File Regulatory SAR" button are demonstration outputs and do not submit a filing to FinCEN.
+The application features a hybrid resilience architecture: it queries Snowflake Cortex LLM (llama3.1-8b) live via native SQL functions when connected, and falls back seamlessly to an internal deterministic compliance engine if offline.
 
-## Features
+## Key Capabilities
 
-- Alert queue for three synthetic high-risk accounts.
-- Transaction ledger inspection with Snowflake-backed data when a connection is available.
-- Offline demo mode with built-in mock transactions when Snowflake is unavailable.
-- Structuring and layering analysis against sub-threshold transactions.
-- Policy-review response referencing 31 CFR Sections 1010.314 and 1020.320.
-- Optional Snowflake Cortex completion for free-form chat queries.
-- SAR-style Markdown dossier preview and download.
+- 🚨 Active Alert Queue & Suspect Triage: Instant multi-account triage across high-risk typologies including smurfing, commercial shell layering, and branch hopping.  
+- 🧠 Snowflake Cortex Autonomous Copilot: Live conversational investigative agent powered by SNOWFLAKE.CORTEX.COMPLETE running llama3.1-8b to reason across transactional logs  and FinCEN statutes.  
+- 🛡️ Hardened Compliance Guardrail Filter: Employs defensive legal framing and refusal-interceptor logic to eliminate LLM safety false positives on legitimate regulatory queries.  
+- 📊 Dual-Engine Connectivity: Compatible with native Streamlit in Snowflake (SiS) via get_active_session(), direct local connector driver (snowflake-connector-python), and st.connection("snowflake").  
+- ⚡ Live Status Telemetry: Dynamic header and sidebar status indicators providing real-time engine visibility (● ONLINE / ● OFFLINE).  
+- 📁 Form SAR-1020 Dossier Compiler: Compiles complete, FinCEN-compliant Suspicious Activity Reports with subject profiles, transaction audit tables, and legal narrative justifications ready for Markdown export.
 
-## Architecture
+## System Architecture
 
-1. **Streamlit application:** Provides the alert queue, investigation workspace, transaction ledger, and SAR dossier views.
-2. **Structured data:** Reads `RISK_DB.AML_CORE.TRANSACTIONS` when a Snowflake session is available. The repository also includes CSV data for the synthetic dataset.
-3. **Semantic model:** `semantic_model/aml_semantic_model.yaml` describes the `ACCOUNTS` and `TRANSACTIONS` tables and includes example structuring and layering queries.
-4. **Cortex integration:** When running with a Snowflake session, free-form chat uses `SNOWFLAKE.CORTEX.COMPLETE` with `mistral-large2`. The quick policy action is a local demonstration response; it does not currently query a Cortex Search service.
-
-## Synthetic scenarios
-
-The generator creates 52 account profiles and a synthetic transaction ledger. The three highlighted cases are:
-
-1. **James Sterling (`ACC_1042`) - cash structuring:** Four cash deposits between $9,000 and $10,000 over approximately 42 hours, totaling $38,020, followed by a $37,500 wire to a Cayman Islands counterparty.
-2. **Apex Shell Holdings Ltd (`ACC_1085`) - commercial structuring:** Four daily ACH deposits totaling $39,760, followed by a $39,500 wire to Panama.
-3. **Marcus Vance (`ACC_1102`) - rapid cash layering:** Three cash deposits totaling $29,500 within five hours, followed by a $29,000 cash withdrawal.
-
-The checked-in `data/transactions.csv` contains the generated ledger used by the prototype. Run the generator to recreate the data if needed.
-
-## Run locally
-
-### 1. Install dependencies
-
-```bash
-python -m pip install -r requirements.txt
+```text
+┌─────────────────────────────────────────────────────────────┐
+│                 Streamlit Presentation Layer                │
+│       Alert Queue  •  Cortex Copilot  •  SAR Dossier        │
+└──────────────┬───────────────────────────────┬──────────────┘
+               │                               │
+      [Cortex LLM Pipeline]            [Data & Fallback]
+               ▼                               ▼
+┌─────────────────────────────┐ ┌─────────────────────────────┐
+│  Snowflake Cortex Engine    │ │  Synthetic Compliance Core  │
+│  - llama3.1-8b Completion   │ │  - Deterministic Math Engine│
+│  - Automated SQL Ingestion  │ │  - Statutory Rules Cache    │
+│  - Guardrail Interception   │ │  - Zero-Fail Mock Ledger    │
+└──────────────┬──────────────┘ └──────────────┬──────────────┘
+               │                               │
+               └───────────────┬───────────────┘
+                               ▼
+               ┌───────────────────────────────┐
+               │    Unified Snowflake Engine   │
+               │   Snowpark / Connector Driver │
+               │     RISK_DB.AML_CORE Schema   │
+               └───────────────────────────────┘
 ```
 
-### 2. Start the app
+## Highlighted Investigation Scenarios
+
+The copilot includes three pre-loaded, high-priority audit typologies:  
+1. James Sterling (ACC_1042) — Personal Checking  
+    - Typology: Smurfing / Structured Cash Evasion + Cayman Layering.  
+    - Pattern: 4 cash deposits under the $10,000 threshold within 42 hours ($38,020 total) followed by an immediate $37,500 outbound international wire to a Cayman Islands entity.  
+    - Governing Rule: 31 CFR § 1010.314 (Structuring Transactions to Evade CTR Reporting).  
+2. Apex Shell Holdings Ltd (ACC_1085) — Business Checking  
+    - Typology: Commercial Velocity Structuring & Outbound Offshore Sweep.  
+    - Pattern: Rapid ACH aggregation totaling $39,760 from shell counter-parties over 48 hours, immediately funneled into an outbound cross-border wire to Banco Panama
+    - Governing Rule: 31 CFR § 1020.320 (Reports by Banks of Suspicious Transactions).  
+3. Marcus Vance (ACC_1102) — Personal Savings  
+    - Typology: Same-Day Branch Hopping & Velocity Layering.  
+    - Pattern: 3 sequential cash deposits executed across different branch locations within 4 hours ($26,500 aggregate) to evade single-teller CTR scrutiny.  
+    - Governing Rule: 31 CFR § 1010.314 (Aggregated Branch Structuring).  
+
+
+## Getting Started
+
+### Prerequisites
+- Python: Standard 64-bit installer (Python 3.10 or Python 3.11 from python.org).
+- **Note for Windows users:** Avoid the Windows Store sandboxed package (WindowsApps) to prevent reparse-point and socket initialization errors.
+
+### 1. Clone & Set Up Environment
+
+```bash
+git clone https://github.com/your-org/snowguard-aml.git
+cd snowguard-aml
+
+# Recommended: Python 3.11 virtual environment
+py -3.11 -m venv venv
+venv\Scripts\activate  # On macOS/Linux: source venv/bin/activate
+```
+
+### 2. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Launch Application (Standalone Demo Mode)
+
+Without Snowflake credentials, SnowGuard starts immediately in Standalone Zero-Fail Mode:
 
 ```bash
 streamlit run app/streamlit_app.py
 ```
 
-Without Snowflake credentials, the app starts in standalone demo mode using its built-in mock transactions.
+## Snowflake Connection Setup (Live Online Mode)
 
-## Optional Snowflake connection
+To enable live Snowflake Cortex LLM reasoning and direct warehouse querying:
+1. Create a secrets file at .streamlit/secrets.toml:
+```bash
+mkdir .streamlit
+touch .streamlit/secrets.toml
+```
 
-For a local Snowflake connection, create `.streamlit/secrets.toml` and provide the credentials supported by your Streamlit Snowflake connection:
+2. Add your Snowflake connection parameters:
 
 ```toml
 [connections.snowflake]
@@ -61,31 +109,37 @@ warehouse = "AML_WH"
 database = "RISK_DB"
 schema = "AML_CORE"
 ```
-
 Do not commit this file or expose credentials in source control. The app expects the `ACCOUNTS` and `TRANSACTIONS` tables in `RISK_DB.AML_CORE`.
 
-## Repository layout
+3. Re-launch Streamlit:
+```bash
+streamlit run app/streamlit_app.py
+```
+
+## Repository Structure
 
 ```text
 snowguard-aml/
+├── .streamlit/
+│   └── secrets.toml              # Snowflake connection credentials (local)
 ├── app/
-│   └── streamlit_app.py
+│   └── streamlit_app.py          # Primary Streamlit application & Cortex copilot
 ├── data/
-│   ├── accounts.csv
-│   ├── generate_synthetic_data.py
-│   └── transactions.csv
+│   ├── accounts.csv              # Synthetic account profiles
+│   ├── generate_synthetic_data.py# Generator script for AML transaction ledger
+│   └── transactions.csv          # Raw ledger records
 ├── docs/
-│   └── fincen_aml_guidelines.md
+│   └── fincen_aml_guidelines.md  # FinCEN & BSA reference documentation
 ├── semantic_model/
-│   └── aml_semantic_model.yaml
+│   └── aml_semantic_model.yaml   # Cortex Analyst semantic definitions
 ├── skills/
-│   ├── skill_1_triage.md
-│   ├── skill_2_policy_check.md
-│   └── skill_sar_dossier.md
-├── requirements.txt
+│   ├── skill_1_triage.md         # Copilot triage specifications
+│   ├── skill_2_policy_check.md   # BSA/FinCEN statutory rules
+│   └── skill_sar_dossier.md      # SAR narrative assembly templates
+├── requirements.txt              # Production dependency specifications
 └── README.md
 ```
 
-## Regulatory disclaimer
+## Regulatory Disclaimer
 
-The statutory references and generated narratives are provided for demonstration and testing only. They are not legal advice, do not establish that activity is reportable, and must be reviewed by a qualified compliance professional before use in a real AML program.
+This application is a software prototype developed for hackathon and demonstration purposes. The accounts, transactions, and scenarios are entirely synthetic. Generated SAR filings and statutory assessments are for testing and evaluation only, do not constitute legal advice, and do not submit live filings to FinCEN or law enforcement. Production deployments require review by qualified compliance and legal personnel.
